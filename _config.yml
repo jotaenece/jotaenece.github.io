@@ -1,0 +1,9 @@
+title: "El Portfolio de Jotaenece"
+description: "Data Engineer de día, Escritor de noche."
+theme: jekyll-theme-minimal # Este es un tema básico para empezar
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+author:
+  name: "J. Navarro"
+  email: "tuemail@ejemplo.com"
