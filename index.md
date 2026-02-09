@@ -8,11 +8,6 @@ title:  # Esto elimina el título "jotaenece" o "Home" del cuerpo de la página
 #  overlay_filter: 0.5
 #  excerpt: ""
   
-  actions:
-    - label: "Explorar Relatos"
-      url: "/taller/"
-    - label: "Ver Biblioteca"
-      url: "/lecturas/"
 
 # Única fila con dos elementos
 funcionalidades_row:
@@ -39,7 +34,7 @@ funcionalidades_row:
 <h3>📖 Progreso de lectura actual: <i>El Juicio Final de Carl - Matt Dinniman</i></h3>
 <div style="background-color: #333; border-radius: 13px; padding: 3px;">
   <div style="background-color: #3498db; width: 5%; height: 20px; border-radius: 10px; text-align: center; color: white; font-size: 12px; line-height: 20px;">
-    5% terminado
+    5%
   </div>
 </div>
 
