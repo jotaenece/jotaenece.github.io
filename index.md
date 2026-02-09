@@ -8,19 +8,6 @@ title:  # Esto elimina el título "jotaenece" o "Home" del cuerpo de la página
 #  overlay_filter: 0.5
 #  excerpt: ""
 
-<script>
-  const text = ">> Ejecutando: Data_Engineer.py ... OK. >> Cargando: Escritura_Creativa.exe ... OK.";
-  let i = 0;
-  function typeWriter() {
-    if (i < text.length) {
-      document.getElementById("typing-text").innerHTML += text.charAt(i);
-      i++;
-      setTimeout(typeWriter, 50);
-    }
-  }
-  typeWriter();
-</script>
-
 # Única fila con dos elementos
 funcionalidades_row:
   - image_path: /assets/images/taller.jpg
@@ -40,6 +27,21 @@ funcionalidades_row:
 ---
 
 {% include feature_row id="funcionalidades_row" %}
+
+---
+
+<script>
+  const text = ">> Ejecutando: Data_Engineer.py ... OK. >> Cargando: Escritura_Creativa.exe ... OK.";
+  let i = 0;
+  function typeWriter() {
+    if (i < text.length) {
+      document.getElementById("typing-text").innerHTML += text.charAt(i);
+      i++;
+      setTimeout(typeWriter, 50);
+    }
+  }
+  typeWriter();
+</script>
 
 ---
 
