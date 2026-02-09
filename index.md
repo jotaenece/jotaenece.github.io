@@ -2,19 +2,33 @@
 layout: home
 author_profile: true
 header:
-  overlay_image: /assets/images/header.jpg # Imagen de fondo (luego ponemos una)
-  overlay_filter: 0.5 # Oscurece la imagen para que se lea el texto
-  caption: "Photo credit: [**Unsplash**](https://unsplash.com)"
-excerpt: "Bienvenido a mi rincón digital. Aquí convergen los **Datos** y la **Ficción**."
+  overlay_image: /assets/images/header.jpg
+  overlay_filter: 0.5
+excerpt: "Donde los datos se transforman en historias."
+
+# Configuración de las Tarjetas
+taller_row:
+  - image_path: /assets/images/taller.jpg # Sube una foto de una máquina de escribir o código
+    alt: "Sección Taller"
+    title: "El Taller"
+    excerpt: "Ejercicios de escritura, relatos de ciencia ficción y avances de mi novela."
+    url: "/taller/"
+    btn_label: "Entrar al Taller"
+    btn_class: "btn--primary"
+
+biblioteca_row:
+  - image_path: /assets/images/biblioteca.jpg # Sube una foto de libros
+    alt: "Sección Biblioteca"
+    title: "La Biblioteca"
+    excerpt: "Reseñas, críticas y mis lecturas actuales en Goodreads."
+    url: "/lecturas/"
+    btn_label: "Ver Libros"
+    btn_class: "btn--info"
 ---
 
-¡Hola! 👋 Soy un **Data Developer** apasionado por Power BI y Python, pero mi verdadera obsesión comienza cuando cierro el dashboard: **escribir historias**.
+{% include feature_row id="taller_row" type="center" %}
 
-Aquí encontrarás dos mundos:
-
-1.  **El Taller:** Mis ejercicios de escritura creativa, relatos de ciencia ficción y novela negra.
-2.  **La Biblioteca:** Reseñas de lo que estoy leyendo y recomendaciones.
+{% include feature_row id="biblioteca_row" type="center" %}
 
 ---
-
-### 📝 Últimas publicaciones
+### 🖋️ Últimas entradas del blog
