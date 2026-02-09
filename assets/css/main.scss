@@ -1,7 +1,24 @@
 ---
 ---
+/* 1. Definimos el ancho ANTES de importar el tema */
+$max-width: 95%; /* Cambia 1280px (defecto) por un porcentaje o algo mayor como 1600px */
+
+/* 2. Importamos el tema */
 @import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; 
 @import "minimal-mistakes"; 
+
+/* 3. Tus personalizaciones adicionales */
+.container {
+  max-width: $max-width;
+}
+
+/* Ajuste para que el contenido principal ocupe más espacio respecto al sidebar */
+.initial-content, .archive {
+  @media (min-width: 1024px) {
+    width: 80%; /* Aumenta el ancho del contenido principal */
+    padding-right: 0;
+  }
+}
 
 /* --- Quitar el nombre del "Masthead" --- */
 .site-title {
