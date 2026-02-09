@@ -3,6 +3,11 @@
 @import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; 
 @import "minimal-mistakes"; 
 
+/* --- Quitar el nombre del "Masthead" --- */
+.site-title {
+  display: none;
+}
+
 /* --- EFECTO CRISTAL Y HOVER PARA TARJETAS --- */
 .feature__item {
   background: rgba(255, 255, 255, 0.05); /* Fondo sutil para modo oscuro */
@@ -36,4 +41,35 @@
     filter: brightness(1.2);
     transform: scale(1.1);
   }
+}
+
+/* --- AJUSTE DE TARJETAS SIMÉTRICAS --- */
+
+/* Forzamos a que la fila sea un contenedor Flex */
+.feature__wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: stretch; /* Esto hace que todas midan lo mismo de alto */
+}
+
+.feature__item {
+  flex: 1; /* Ambas ocupan el mismo espacio */
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%; /* Asegura que el fondo cubra todo el alto */
+  
+  /* Para que el botón siempre quede abajo del todo */
+  .archive__item-teaser {
+    margin-bottom: auto;
+  }
+}
+
+/* Forzamos que las imágenes tengan la misma proporción */
+.feature__item img {
+  width: 100%;
+  height: 200px; /* Ajusta este valor según prefieras */
+  object-fit: cover; /* Recorta la imagen para que encaje sin deformarse */
+  border-radius: 8px;
 }
