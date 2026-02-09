@@ -3,19 +3,37 @@
 @import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; 
 @import "minimal-mistakes"; 
 
-/* Efecto Hover para las tarjetas */
+/* --- EFECTO CRISTAL Y HOVER PARA TARJETAS --- */
 .feature__item {
-  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-  border-radius: 10px;
-  overflow: hidden;
-  padding: 10px;
+  background: rgba(255, 255, 255, 0.05); /* Fondo sutil para modo oscuro */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  padding: 20px;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Animación elástica */
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
 
   &:hover {
-    transform: translateY(-10px); /* La tarjeta sube un poco */
-    box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+    transform: scale(1.05) translateY(-5px); /* Se agranda y sube */
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.4);
+    border-color: #3498db; /* Un toque de color en el borde al tocar */
   }
 }
 
-.feature__item img {
-  border-radius: 8px;
+/* --- EFECTO DE GRADIENTE EN TEXTOS --- */
+.archive__item-title {
+  background: linear-gradient(90deg, #3498db, #9b59b6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: bold;
+}
+
+/* --- BOTONES CON PULSACIÓN --- */
+.btn {
+  border-radius: 20px;
+  transition: all 0.2s;
+  &:hover {
+    filter: brightness(1.2);
+    transform: scale(1.1);
+  }
 }
