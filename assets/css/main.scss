@@ -70,6 +70,14 @@ $max-width: 95%; /* Cambia 1280px (defecto) por un porcentaje o algo mayor como 
   align-items: stretch; /* Esto hace que todas midan lo mismo de alto */
 }
 
+/* Hacer que las filas de funcionalidades (cards) aprovechen el ancho total */
+.feature__wrapper {
+  max-width: 100%;
+  margin: 0 auto;
+  display: flex;
+  gap: 20px; /* Espacio entre tarjetas */
+}
+
 .feature__item {
   flex: 1; /* Ambas ocupan el mismo espacio */
   margin: 10px;
