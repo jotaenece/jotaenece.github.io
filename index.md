@@ -4,31 +4,32 @@ author_profile: true
 header:
   overlay_image: /assets/images/header.jpg
   overlay_filter: 0.5
-excerpt: ""
+  excerpt: ""
+  
+  actions:
+    - label: "Explorar Relatos"
+      url: "/taller/"
+    - label: "Ver Biblioteca"
+      url: "/lecturas/"
 
-# Configuración de las Tarjetas
-taller_row:
-  - image_path: /assets/images/taller.jpg # Sube una foto de una máquina de escribir o código
+# Única fila con dos elementos
+funcionalidades_row:
+  - image_path: /assets/images/taller.jpg
     alt: "Sección Taller"
     title: "El Taller"
-    excerpt: "Ejercicios de escritura, relatos de ciencia ficción y avances de mi novela."
+    excerpt: "Donde el código se convierte en narrativa. Relatos, ejercicios y borradores."
     url: "/taller/"
-    btn_label: "Entrar al Taller"
+    btn_label: "Entrar"
     btn_class: "btn--primary"
-
-biblioteca_row:
-  - image_path: /assets/images/biblioteca.jpg # Sube una foto de libros
+  - image_path: /assets/images/biblioteca.jpg
     alt: "Sección Biblioteca"
     title: "La Biblioteca"
-    excerpt: "Reseñas, críticas y mis lecturas actuales en Goodreads."
+    excerpt: "Curación de lecturas, reseñas técnicas y mis favoritos de Goodreads."
     url: "/lecturas/"
-    btn_label: "Ver Libros"
+    btn_label: "Leer Reviews"
     btn_class: "btn--info"
 ---
 
-{% include feature_row id="taller_row" type="center" %}
-
-{% include feature_row id="biblioteca_row" type="center" %}
+{% include feature_row id="funcionalidades_row" %}
 
 ---
-### 🖋️ Últimas entradas del blog
