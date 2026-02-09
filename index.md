@@ -33,3 +33,31 @@ funcionalidades_row:
 {% include feature_row id="funcionalidades_row" %}
 
 ---
+
+<h3>📖 Progreso de lectura actual: <i>El Juicio Final de Carl - Matt Dinniman</i></h3>
+<div style="background-color: #333; border-radius: 13px; padding: 3px;">
+  <div style="background-color: #3498db; width: 5%; height: 20px; border-radius: 10px; text-align: center; color: white; font-size: 12px; line-height: 20px;">
+    5% terminado
+  </div>
+</div>
+
+---
+
+[<i class="fab fa-goodreads"></i> Sígueme en Goodreads](https://goodreads.com/tu-perfil){: .btn .btn--success}
+
+---
+
+<p id="typing-text" style="font-family: monospace; color: #00ff00;"></p>
+
+<script>
+  const text = ">> Ejecutando: Data_Engineer.py ... OK. >> Cargando: Escritura_Creativa.exe ... OK.";
+  let i = 0;
+  function typeWriter() {
+    if (i < text.length) {
+      document.getElementById("typing-text").innerHTML += text.charAt(i);
+      i++;
+      setTimeout(typeWriter, 50);
+    }
+  }
+  typeWriter();
+</script>
