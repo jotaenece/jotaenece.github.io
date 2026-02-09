@@ -6,7 +6,7 @@ url: "https://jotaenece.github.io" # Tu URL exacta
 
 # --- EL TEMA MAGICO (No toques esto) ---
 remote_theme: mmistakes/minimal-mistakes
-minimal_mistakes_skin: "default" # Opciones: "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
+minimal_mistakes_skin: "dark" # Opciones: "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
 
 # --- PLUGINS NECESARIOS ---
 plugins:
