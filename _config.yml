@@ -1,5 +1,5 @@
 # --- CONFIGURACIÓN PRINCIPAL ---
-title: "Jotaenece" # Pon tu nombre real o nick
+title: "J. Navarro" # Pon tu nombre real o nick
 name: "Jotaenece"
 description: "Data Engineer & Storyteller"
 url: "https://jotaenece.github.io" # Tu URL exacta
@@ -23,15 +23,15 @@ author:
   bio    : "Ingeniero de Datos transformando **SQL** en insights y **palabras** en historias."
   location: "España"
   links:
-    - label: "LinkedIn"
-      icon: "fab fa-fw fa-linkedin"
-      url: "https://linkedin.com/in/tu-usuario"
+    #- label: "LinkedIn"
+    #  icon: "fab fa-fw fa-linkedin"
+    #  url: "https://linkedin.com/in/tu-usuario"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
-      url: "https://github.com/tu-usuario"
+      url: "https://github.com/jotaenece"
     - label: "Goodreads"
       icon: "fab fa-fw fa-goodreads"
-      url: "https://goodreads.com/tu-usuario"
+      url: "https://goodreads.com/jorgenavarrobook"
 
 # --- ESTRUCTURA ---
 defaults:
