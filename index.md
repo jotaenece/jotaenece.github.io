@@ -1,10 +1,12 @@
 ---
 layout: home
 author_profile: true
-header:
-  overlay_image: /assets/images/header.jpg
-  overlay_filter: 0.5
-  excerpt: ""
+title:  # Esto elimina el título "jotaenece" o "Home" del cuerpo de la página
+# ELIMINAMOS EL HEADER, COMENTANDOLO
+# header:
+#  overlay_image: /assets/images/header.jpg
+#  overlay_filter: 0.5
+#  excerpt: ""
   
   actions:
     - label: "Explorar Relatos"
