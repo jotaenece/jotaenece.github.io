@@ -19,7 +19,7 @@ funcionalidades_row:
     btn_class: "btn--info"
 ---
 
-<p id="typing-text" style="font-family: monospace; color: #00ff00; background: transparent; padding: 10px 0; min-height: 25px; font-weight: bold; margin: 0;"></p>
+<p id="typing-text" style="font-family: monospace; color: #00ff00; background: transparent; padding: 10px 0; min-height: 25px; font-weight: bold; margin: 0; margin-top: 0; margin-bottom: 20px;"></p>
 
 <script>
   window.addEventListener('DOMContentLoaded', (event) => {
