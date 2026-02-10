@@ -142,3 +142,17 @@ $max-width: 95%; /* Cambia 1280px (defecto) por un porcentaje o algo mayor como 
   margin-top: 0 !important;
   padding-top: 10px; /* Un poco de aire mínimo para que no pegue al menú */
 }
+
+/* Efecto de cursor parpadeante al final del mensaje */
+#typing-text::after {
+  content: "|";
+  animation: blink 1s infinite;
+  color: #00ff00;
+  margin-left: 5px;
+}
+
+@keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
+}
