@@ -98,3 +98,8 @@ $max-width: 95%; /* Cambia 1280px (defecto) por un porcentaje o algo mayor como 
   object-fit: cover; /* Recorta la imagen para que encaje sin deformarse */
   border-radius: 8px;
 }
+
+/* Ocultar el nombre del sitio en la barra superior (Home button) */
+.site-title {
+  display: none !important;
+}
