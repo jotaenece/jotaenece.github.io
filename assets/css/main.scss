@@ -100,9 +100,24 @@ $max-width: 95%; /* Cambia 1280px (defecto) por un porcentaje o algo mayor como 
 }
 
 /* Ocultar el nombre del sitio en la barra superior (Home button) */
+/*
 .site-title {
   display: none !important;
 }
+*/
+
+.greedy-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* El script a la izquierda, el menú a la derecha */
+}
+
+#typing-text {
+  flex-grow: 1; /* Hace que ocupe el espacio sobrante */
+  white-space: nowrap;
+  overflow: hidden;
+}
+
 
 /* --- ELIMINAR ESPACIO SUPERIOR --- */
 
