@@ -19,26 +19,6 @@ funcionalidades_row:
     btn_class: "btn--info"
 ---
 
-<p id="typing-text" style="font-family: monospace; color: #00ff00; background: transparent; padding: 10px 0; min-height: 25px; font-weight: bold; margin: 0; margin-top: 0; margin-bottom: 20px;"></p>
-
-<script>
-  window.addEventListener('DOMContentLoaded', (event) => {
-    setTimeout(() => {
-      const text = ">> Ejecutando: Data_Engineer.py ... OK. >> Cargando: Escritura_Creativa.exe ... OK.";
-      let i = 0;
-      const target = document.getElementById("typing-text");
-      function typeWriter() {
-        if (i < text.length) {
-          target.innerHTML += text.charAt(i);
-          i++;
-          setTimeout(typeWriter, 40);
-        }
-      }
-      typeWriter();
-    }, 300);
-  });
-</script>
-
 <style>
   hr { border: 0; background: transparent; margin: 1.5em 0; }
 </style>
