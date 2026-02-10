@@ -156,3 +156,73 @@ $max-width: 95%; /* Cambia 1280px (defecto) por un porcentaje o algo mayor como 
   50% { opacity: 0; }
   100% { opacity: 1; }
 }
+
+/* DISEÑO DE TARJETAS PARA EL TALLER (FULL WIDTH) */
+
+
+.taller-container {
+  margin-top: 2rem;
+}
+
+.taller-card-link {
+  text-decoration: none !important;
+  color: inherit !important;
+  display: block;
+  margin-bottom: 1.5rem;
+}
+
+.taller-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 1.5rem;
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  position: relative;
+  overflow: hidden;
+
+  &:hover {
+    transform: translateX(10px); /* Efecto de desplazamiento lateral */
+    background: rgba(255, 255, 255, 0.08);
+    border-color: #3498db;
+    box-shadow: -5px 0 0 #3498db; /* Una línea de color a la izquierda */
+  }
+}
+
+.taller-meta {
+  display: flex;
+  gap: 15px;
+  font-size: 0.75rem;
+  margin-bottom: 0.5rem;
+  color: #3498db;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.taller-title {
+  margin: 0.5rem 0;
+  font-size: 1.6rem;
+  color: #fff;
+}
+
+.taller-excerpt {
+  color: #bbb;
+  font-family: 'Georgia', serif;
+  font-style: italic;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.taller-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.85rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding-top: 1rem;
+  color: #888;
+}
+
+.taller-read-more {
+  color: #3498db;
+  font-weight: bold;
+}
