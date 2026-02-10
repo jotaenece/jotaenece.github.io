@@ -1,9 +1,12 @@
 ---
-layout: post
+layout: single
 title:  "Hola, mundo"
-date:   2026-02-06 12:00:00 +0100
 categories: escritura
 tags: [ejercicio, hábito]
+author_profile: true
+share: true
+toc: false # No queremos índice en un relato, distrae
+classes: wide # Opcional: para usar más ancho si el relato lo requiere
 ---
 
 Hace meses, empecé un reto. Ese reto constaba en ser capaz de escribir cada dia unas cuantas lineas de lo que fuera, escritura libre.
