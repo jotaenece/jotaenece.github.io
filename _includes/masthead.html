@@ -22,15 +22,22 @@
 </div>
 
 <script>
-  const text = ">> Ejecutando: Data_Engineer.py ... OK. >> Cargando: Escritura_Creativa.exe ... OK.";
+  // El nuevo mensaje, más cálido y enfocado a la creación
+  const text = "Bienvenidos a mi rincón de pensar, crear y plasmar...";
   let i = 0;
+
   function typeWriter() {
     if (i < text.length) {
       document.getElementById("typing-text").innerHTML += text.charAt(i);
       i++;
-      setTimeout(typeWriter, 50);
+      setTimeout(typeWriter, 70); // Un pelín más lento para que sea más legible
     }
   }
-  // Esperar un poco a que cargue la página
-  window.onload = typeWriter;
+
+  // Aseguramos que el DOM esté listo
+  document.addEventListener("DOMContentLoaded", function() {
+    // Limpiamos el contenedor por si acaso
+    document.getElementById("typing-text").innerHTML = "";
+    typeWriter();
+  });
 </script>
