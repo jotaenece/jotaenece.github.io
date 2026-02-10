@@ -226,3 +226,68 @@ $max-width: 95%; /* Cambia 1280px (defecto) por un porcentaje o algo mayor como 
   color: #3498db;
   font-weight: bold;
 }
+
+/* --- ESTILO DE LECTURA INMERSIVA (TALLER) --- */
+
+/* 1. Contenedor de lectura enfocado */
+.layout--single .page__content {
+  font-family: 'Georgia', 'Times New Roman', serif; /* Fuente literaria */
+  font-size: 1.25rem;
+  line-height: 1.8;
+  color: #e4e4e4;
+  max-width: 800px; /* Ancho óptimo para lectura */
+  margin: 0 auto;
+  text-align: justify;
+}
+
+/* 2. La Letra Capital (Drop Cap) */
+.layout--single .page__content > p:first-of-type::first-letter {
+  font-family: 'Playfair Display', serif;
+  float: left;
+  font-size: 4.5rem;
+  line-height: 1;
+  margin-top: 0.15rem;
+  margin-right: 0.15rem;
+  padding: 0 0.5rem;
+  color: #3498db; /* El color azul de tu web */
+  text-shadow: 2px 2px 0px rgba(0,0,0,0.5);
+}
+
+/* 3. Estilo para los diálogos y citas */
+blockquote {
+  font-style: italic;
+  border-left: 4px solid #3498db;
+  background: rgba(52, 152, 219, 0.05);
+  padding: 1rem 1.5rem;
+  margin: 2rem 0;
+  border-radius: 0 10px 10px 0;
+}
+
+/* 4. Títulos de capítulos elegantes */
+.page__title {
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem !important;
+  text-align: center;
+  margin-bottom: 2rem !important;
+  background: linear-gradient(90deg, #3498db, #9b59b6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* 5. Separador de escenas (***) */
+hr {
+  border: 0;
+  height: 1px;
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0));
+  margin: 3rem 0;
+  text-align: center;
+}
+hr::after {
+  content: "§"; /* Un símbolo elegante en el medio */
+  display: inline-block;
+  position: relative;
+  top: -0.7em;
+  font-size: 1.5em;
+  padding: 0 10px;
+  background: #1a1a1a; /* El fondo de tu web */
+}
