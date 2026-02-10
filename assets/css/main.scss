@@ -292,28 +292,28 @@ hr::after {
   background: #1a1a1a; /* El fondo de tu web */
 }
 
-/* --- OPTIMIZACIÓN DE LECTURA PARA ESCRITORES --- */
+/* --- COLUMNA DE LECTURA (POSTS) --- */
 
-/* Limitamos el contenedor de la página de post */
-.layout--single .page {
-  max-width: 1200px !important; /* El contenedor total (texto + sidebar) no crecerá más de esto */
+.layout--single .page__inner-wrap {
+  /* Limitamos el ancho del área de contenido del post */
+  max-width: 800px !important; 
   margin-left: auto;
   margin-right: auto;
 }
 
 .layout--single .page__content {
-  /* El "Ancho Dorado" para lectura es de entre 700px y 800px */
-  max-width: 750px !important; 
-  margin-left: auto;
-  margin-right: auto;
+  /* Tamaño de fuente óptimo para no cansar la vista */
+  font-size: 1.1rem !important;
+  line-height: 1.8;
   
-  /* Ajustamos la fuente para que no escale de forma desproporcionada */
-  font-size: 1.15rem !important; 
-  line-height: 1.7;
-  padding: 2rem 1rem;
+  /* Evitamos que el texto se pegue a los bordes en el móvil */
+  padding: 0 1rem;
 }
 
-/* Si usas la clase 'wide' en el post, asegúrate de que no rompa esto */
-.layout--single .page__content.wide {
-  max-width: 900px !important;
+/* Ajuste para que la imagen de cabecera del post tampoco sea gigante */
+.page__hero-image {
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
 }
