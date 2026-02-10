@@ -103,3 +103,27 @@ $max-width: 95%; /* Cambia 1280px (defecto) por un porcentaje o algo mayor como 
 .site-title {
   display: none !important;
 }
+
+/* --- ELIMINAR ESPACIO SUPERIOR --- */
+
+/* Quita el padding superior del contenedor principal */
+#main {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+}
+
+/* Quita el margen superior del contenido de la página */
+.page {
+  margin-top: 0 !important;
+}
+
+.page__content {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+/* Ajuste específico para que el script de consola no tenga margen arriba */
+#typing-text {
+  margin-top: 0 !important;
+  padding-top: 10px; /* Un poco de aire mínimo para que no pegue al menú */
+}
