@@ -1,56 +1,58 @@
 ---
 ---
-/* 1. Definimos el ancho ANTES de importar el tema */
-$max-width: 95%; /* Cambia 1280px (defecto) por un porcentaje o algo mayor como 1600px */
+/* 1. Importamos el tema */
+@import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}";
+@import "minimal-mistakes";
 
-/* 2. Importamos el tema */
-@import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; 
-@import "minimal-mistakes"; 
-
-/* 3. Tus personalizaciones adicionales */
-.container {
-  max-width: $max-width;
-}
-
-/* Ajuste para que el contenido principal ocupe más espacio respecto al sidebar */
-.initial-content, .archive {
+/* ── LAYOUT WIDTHS ───────────────────────────────────────────────
+   Solo restringimos el ancho del contenido en layouts con sidebar
+   (single, archive). El splash (homepage) ocupa el 100%.
+   ──────────────────────────────────────────────────────────────── */
+body:not(.layout--splash) .initial-content {
   @media (min-width: 1024px) {
-    width: 80%; /* Aumenta el ancho del contenido principal */
+    width: 80%;
     padding-right: 0;
   }
 }
 
-/* --- Quitar el nombre del "Masthead" --- */
-.site-title {
-  display: none;
-}
-
-/* --- EFECTO CRISTAL Y HOVER PARA TARJETAS --- */
-.feature__item {
-  background: rgba(255, 255, 255, 0.05); /* Fondo sutil para modo oscuro */
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 15px;
-  padding: 20px;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Animación elástica */
-  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-
-  &:hover {
-    transform: scale(1.05) translateY(-5px); /* Se agranda y sube */
-    background: rgba(255, 255, 255, 0.1);
-    box-shadow: 0 12px 30px rgba(0,0,0,0.4);
-    border-color: #3498db; /* Un toque de color en el borde al tocar */
+/* Splash: ancho completo sin padding lateral del tema */
+body.layout--splash {
+  #main,
+  .page,
+  .page__content {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    max-width: 100% !important;
+    width: 100% !important;
   }
 }
 
-/* --- EFECTO DE GRADIENTE EN TEXTOS --- */
-.archive__item-title {
-  background: linear-gradient(90deg, #3498db, #9b59b6);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-weight: bold;
+/* ── ESPACIO SUPERIOR ────────────────────────────────────────── */
+#main {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+}
+.page       { margin-top: 0 !important; }
+.page__content {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
 }
 
-/* --- BOTONES CON PULSACIÓN --- */
+/* ── MASTHEAD ────────────────────────────────────────────────── */
+.site-title { display: none; }
+
+.masthead {
+  background: rgba(8, 8, 20, 0.96) !important;
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255,255,255,0.07) !important;
+}
+.masthead__menu a,
+.greedy-nav a { transition: color 0.2s; }
+.masthead__menu a:hover { color: #00d4aa !important; }
+
+/* ── BOTONES ─────────────────────────────────────────────────── */
 .btn {
   border-radius: 20px;
   transition: all 0.2s;
@@ -60,187 +62,86 @@ $max-width: 95%; /* Cambia 1280px (defecto) por un porcentaje o algo mayor como 
   }
 }
 
-/* --- AJUSTE DE TARJETAS SIMÉTRICAS --- */
-
-/* Forzamos a que la fila sea un contenedor Flex */
-.feature__wrapper {
+/* ── FEATURE CARDS (páginas internas) ───────────────────────── */
+.feature__item {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  padding: 20px;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  flex: 1;
+  margin: 10px;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: stretch; /* Esto hace que todas midan lo mismo de alto */
+  flex-direction: column;
+  min-height: 100%;
+  .archive__item-teaser { margin-bottom: auto; }
+  &:hover {
+    transform: scale(1.05) translateY(-5px);
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.4);
+    border-color: #3498db;
+  }
+  img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+  }
 }
-
-/* Hacer que las filas de funcionalidades (cards) aprovechen el ancho total */
 .feature__wrapper {
   max-width: 100%;
   margin: 0 auto;
   display: flex;
-  gap: 20px; /* Espacio entre tarjetas */
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-between;
+  align-items: stretch;
 }
 
-.feature__item {
-  flex: 1; /* Ambas ocupan el mismo espacio */
-  margin: 10px;
-  display: flex;
-  flex-direction: column;
-  min-height: 100%; /* Asegura que el fondo cubra todo el alto */
-  
-  /* Para que el botón siempre quede abajo del todo */
-  .archive__item-teaser {
-    margin-bottom: auto;
-  }
+/* ── ARCHIVE ITEM TITLES ─────────────────────────────────────── */
+.archive__item-title {
+  background: linear-gradient(90deg, #3498db, #9b59b6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: bold;
 }
 
-/* Forzamos que las imágenes tengan la misma proporción */
-.feature__item img {
-  width: 100%;
-  height: 200px; /* Ajusta este valor según prefieras */
-  object-fit: cover; /* Recorta la imagen para que encaje sin deformarse */
-  border-radius: 8px;
-}
-
-/* Ocultar el nombre del sitio en la barra superior (Home button) */
-/*
-.site-title {
-  display: none !important;
-}
-*/
-
-.greedy-nav {
-  display: flex;
-  align-items: center;
-  justify-content: space-between; /* El script a la izquierda, el menú a la derecha */
-}
-
-#typing-text {
-  flex-grow: 1; /* Hace que ocupe el espacio sobrante */
-  white-space: nowrap;
-  overflow: hidden;
-}
-
-
-/* --- ELIMINAR ESPACIO SUPERIOR --- */
-
-/* Quita el padding superior del contenedor principal */
-#main {
-  padding-top: 0 !important;
-  margin-top: 0 !important;
-}
-
-/* Quita el margen superior del contenido de la página */
-.page {
-  margin-top: 0 !important;
-}
-
-.page__content {
-  margin-top: 0 !important;
-  padding-top: 0 !important;
-}
-
-/* Ajuste específico para que el script de consola no tenga margen arriba */
-#typing-text {
-  margin-top: 0 !important;
-  padding-top: 10px; /* Un poco de aire mínimo para que no pegue al menú */
-}
-
-/* Efecto de cursor parpadeante al final del mensaje */
-#typing-text::after {
-  content: "|";
-  animation: blink 1s infinite;
-  color: #00ff00;
-  margin-left: 5px;
-}
-
-@keyframes blink {
-  0% { opacity: 1; }
-  50% { opacity: 0; }
-  100% { opacity: 1; }
-}
-
-/* DISEÑO DE TARJETAS PARA EL TALLER (FULL WIDTH) */
-
-
-.taller-container {
-  margin-top: 2rem;
-}
-
-.taller-card-link {
-  text-decoration: none !important;
-  color: inherit !important;
-  display: block;
-  margin-bottom: 1.5rem;
-}
-
+/* ── TALLER CARDS ────────────────────────────────────────────── */
+.taller-container  { margin-top: 2rem; }
+.taller-card-link  { text-decoration: none !important; color: inherit !important; display: block; margin-bottom: 1.5rem; }
 .taller-card {
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
   border-radius: 12px;
   padding: 1.5rem;
   transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
   position: relative;
   overflow: hidden;
-
   &:hover {
-    transform: translateX(10px); /* Efecto de desplazamiento lateral */
-    background: rgba(255, 255, 255, 0.08);
+    transform: translateX(10px);
+    background: rgba(255,255,255,0.08);
     border-color: #3498db;
-    box-shadow: -5px 0 0 #3498db; /* Una línea de color a la izquierda */
+    box-shadow: -5px 0 0 #3498db;
   }
 }
+.taller-meta  { display: flex; gap: 15px; font-size: 0.75rem; margin-bottom: 0.5rem; color: #3498db; text-transform: uppercase; letter-spacing: 1px; }
+.taller-title { margin: 0.5rem 0; font-size: 1.6rem; color: #fff; }
+.taller-excerpt { color: #bbb; font-family: 'Georgia', serif; font-style: italic; line-height: 1.6; margin-bottom: 1rem; }
+.taller-footer  { display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 1rem; color: #888; }
+.taller-read-more { color: #3498db; font-weight: bold; }
 
-.taller-meta {
-  display: flex;
-  gap: 15px;
-  font-size: 0.75rem;
-  margin-bottom: 0.5rem;
-  color: #3498db;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-.taller-title {
-  margin: 0.5rem 0;
-  font-size: 1.6rem;
-  color: #fff;
-}
-
-.taller-excerpt {
-  color: #bbb;
-  font-family: 'Georgia', serif;
-  font-style: italic;
-  line-height: 1.6;
-  margin-bottom: 1rem;
-}
-
-.taller-footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 0.85rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
-  padding-top: 1rem;
-  color: #888;
-}
-
-.taller-read-more {
-  color: #3498db;
-  font-weight: bold;
-}
-
-/* --- ESTILO DE LECTURA INMERSIVA (TALLER) --- */
-
-/* 1. Contenedor de lectura enfocado */
+/* ── LECTURA INMERSIVA (POSTS) ───────────────────────────────── */
 .layout--single .page__content {
-  font-family: 'Georgia', 'Times New Roman', serif; /* Fuente literaria */
-  font-size: 1.25rem;
+  font-family: 'Georgia', 'Times New Roman', serif;
+  font-size: 1.1rem !important;
   line-height: 1.8;
   color: #e4e4e4;
-  max-width: 800px; /* Ancho óptimo para lectura */
+  max-width: 800px;
   margin: 0 auto;
   text-align: justify;
+  padding: 0 1rem;
 }
-
-/* 2. La Letra Capital (Drop Cap) */
 .layout--single .page__content > p:first-of-type::first-letter {
   font-family: 'Playfair Display', serif;
   float: left;
@@ -249,21 +150,24 @@ $max-width: 95%; /* Cambia 1280px (defecto) por un porcentaje o algo mayor como 
   margin-top: 0.15rem;
   margin-right: 0.15rem;
   padding: 0 0.5rem;
-  color: #3498db; /* El color azul de tu web */
-  text-shadow: 2px 2px 0px rgba(0,0,0,0.5);
+  color: #3498db;
+  text-shadow: 2px 2px 0 rgba(0,0,0,0.5);
+}
+.layout--single .page__inner-wrap {
+  max-width: 800px !important;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-/* 3. Estilo para los diálogos y citas */
 blockquote {
   font-style: italic;
   border-left: 4px solid #3498db;
-  background: rgba(52, 152, 219, 0.05);
+  background: rgba(52,152,219,0.05);
   padding: 1rem 1.5rem;
   margin: 2rem 0;
   border-radius: 0 10px 10px 0;
 }
 
-/* 4. Títulos de capítulos elegantes */
 .page__title {
   font-family: 'Playfair Display', serif;
   font-size: 3rem !important;
@@ -274,69 +178,30 @@ blockquote {
   -webkit-text-fill-color: transparent;
 }
 
-/* 5. Separador de escenas (***) */
 hr {
   border: 0;
   height: 1px;
-  background-image: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0));
+  background-image: linear-gradient(to right, rgba(255,255,255,0), rgba(255,255,255,0.75), rgba(255,255,255,0));
   margin: 3rem 0;
   text-align: center;
 }
 hr::after {
-  content: "§"; /* Un símbolo elegante en el medio */
+  content: "§";
   display: inline-block;
   position: relative;
   top: -0.7em;
   font-size: 1.5em;
   padding: 0 10px;
-  background: #1a1a1a; /* El fondo de tu web */
+  background: #1a1a1a;
 }
 
-/* --- COLUMNA DE LECTURA (POSTS) --- */
-
-.layout--single .page__inner-wrap {
-  /* Limitamos el ancho del área de contenido del post */
-  max-width: 800px !important; 
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.layout--single .page__content {
-  /* Tamaño de fuente óptimo para no cansar la vista */
-  font-size: 1.1rem !important;
-  line-height: 1.8;
-  
-  /* Evitamos que el texto se pegue a los bordes en el móvil */
-  padding: 0 1rem;
-}
-
-/* Ajuste para que la imagen de cabecera del post tampoco sea gigante */
 .page__hero-image {
   max-width: 1000px;
   margin-left: auto;
   margin-right: auto;
 }
 
-/* ── MASTHEAD UPGRADE ─────────────────────────────── */
-.masthead {
-  background: rgba(8, 8, 20, 0.96) !important;
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(255,255,255,0.07) !important;
-}
-
-.masthead__menu a,
-.greedy-nav a {
-  transition: color 0.2s;
-}
-.masthead__menu a:hover { color: #00d4aa !important; }
-
-/* Active nav link */
-.greedy-nav .visible-links a.active,
-.greedy-nav .visible-links a[aria-current="page"] {
-  color: #3498db !important;
-}
-
-/* ── LECTURAS PAGE (BOOK CARDS) ──────────────────── */
+/* ── LECTURAS PAGE (BOOK CARDS) ──────────────────────────────── */
 .libro-card {
   background: rgba(255,255,255,0.04);
   border: 1px solid rgba(255,255,255,0.08);
@@ -348,29 +213,16 @@ hr::after {
   gap: 1.4rem;
   align-items: flex-start;
   transition: transform 0.25s, border-color 0.25s;
+  &:hover {
+    transform: translateX(5px);
+    border-color: rgba(52,152,219,0.35);
+  }
 }
-.libro-card:hover {
-  transform: translateX(5px);
-  border-color: rgba(52,152,219,0.35);
-}
-.libro-cover {
-  width: 72px;
-  border-radius: 5px;
-  box-shadow: 3px 4px 14px rgba(0,0,0,0.5);
-  display: block;
-}
-.libro-title {
-  font-size: 1.1rem !important;
-  margin-bottom: 0.15rem !important;
-}
-.libro-meta {
-  font-size: 0.78rem;
-  color: #55556a;
-  margin-bottom: 0.6rem;
-  font-family: monospace;
-}
-.libro-stars { color: #f0b429; font-size: 0.9rem; margin-bottom: 0.6rem; display: block; }
-.libro-excerpt { font-size: 0.85rem; line-height: 1.6; color: #aaa; margin-bottom: 0.8rem; }
+.libro-cover    { width: 72px; border-radius: 5px; box-shadow: 3px 4px 14px rgba(0,0,0,0.5); display: block; }
+.libro-title    { font-size: 1.1rem !important; margin-bottom: 0.15rem !important; }
+.libro-meta     { font-size: 0.78rem; color: #55556a; margin-bottom: 0.6rem; font-family: monospace; }
+.libro-stars    { color: #f0b429; font-size: 0.9rem; margin-bottom: 0.6rem; display: block; }
+.libro-excerpt  { font-size: 0.85rem; line-height: 1.6; color: #aaa; margin-bottom: 0.8rem; }
 
 @media (max-width: 480px) {
   .libro-card { grid-template-columns: 1fr; }

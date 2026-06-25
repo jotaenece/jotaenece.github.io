@@ -2,8 +2,6 @@
   <div class="masthead__inner-wrap">
     <div class="masthead__menu">
       <nav id="site-nav" class="greedy-nav">
-        <div id="typing-text" style="font-family: monospace; color: #00ff00; font-size: 0.9rem; font-weight: bold; padding-left: 20px;"></div>
-        
         <ul class="visible-links">
           {% for link in site.data.navigation.main %}
             <li class="masthead__menu-item">
@@ -20,24 +18,3 @@
     </div>
   </div>
 </div>
-
-<script>
-  // El nuevo mensaje, más cálido y enfocado a la creación
-  const text = "Bienvenidos a mi rincón de pensar, crear y plasmar...";
-  let i = 0;
-
-  function typeWriter() {
-    if (i < text.length) {
-      document.getElementById("typing-text").innerHTML += text.charAt(i);
-      i++;
-      setTimeout(typeWriter, 70); // Un pelín más lento para que sea más legible
-    }
-  }
-
-  // Aseguramos que el DOM esté listo
-  document.addEventListener("DOMContentLoaded", function() {
-    // Limpiamos el contenedor por si acaso
-    document.getElementById("typing-text").innerHTML = "";
-    typeWriter();
-  });
-</script>
