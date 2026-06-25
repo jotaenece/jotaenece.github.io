@@ -316,4 +316,63 @@ hr::after {
   margin-left: auto;
   margin-right: auto;
 }
+
+/* ── MASTHEAD UPGRADE ─────────────────────────────── */
+.masthead {
+  background: rgba(8, 8, 20, 0.96) !important;
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255,255,255,0.07) !important;
+}
+
+.masthead__menu a,
+.greedy-nav a {
+  transition: color 0.2s;
+}
+.masthead__menu a:hover { color: #00d4aa !important; }
+
+/* Active nav link */
+.greedy-nav .visible-links a.active,
+.greedy-nav .visible-links a[aria-current="page"] {
+  color: #3498db !important;
+}
+
+/* ── LECTURAS PAGE (BOOK CARDS) ──────────────────── */
+.libro-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 14px;
+  padding: 1.5rem;
+  margin-bottom: 1.4rem;
+  display: grid;
+  grid-template-columns: 72px 1fr;
+  gap: 1.4rem;
+  align-items: flex-start;
+  transition: transform 0.25s, border-color 0.25s;
+}
+.libro-card:hover {
+  transform: translateX(5px);
+  border-color: rgba(52,152,219,0.35);
+}
+.libro-cover {
+  width: 72px;
+  border-radius: 5px;
+  box-shadow: 3px 4px 14px rgba(0,0,0,0.5);
+  display: block;
+}
+.libro-title {
+  font-size: 1.1rem !important;
+  margin-bottom: 0.15rem !important;
+}
+.libro-meta {
+  font-size: 0.78rem;
+  color: #55556a;
+  margin-bottom: 0.6rem;
+  font-family: monospace;
+}
+.libro-stars { color: #f0b429; font-size: 0.9rem; margin-bottom: 0.6rem; display: block; }
+.libro-excerpt { font-size: 0.85rem; line-height: 1.6; color: #aaa; margin-bottom: 0.8rem; }
+
+@media (max-width: 480px) {
+  .libro-card { grid-template-columns: 1fr; }
+  .libro-cover { display: none; }
 }

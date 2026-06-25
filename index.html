@@ -1,0 +1,956 @@
+---
+layout: splash
+permalink: /
+title: false
+---
+
+<style>
+/* ── VARIABLES ─────────────────────────────────────── */
+:root {
+  --bg:       #080814;
+  --card:     rgba(255,255,255,0.04);
+  --border:   rgba(255,255,255,0.07);
+  --blue:     #3498db;
+  --purple:   #9b59b6;
+  --teal:     #00d4aa;
+  --text:     #c8c8d8;
+  --dim:      #55556a;
+  --gb: 0 0 28px rgba(52,152,219,0.35);
+  --gp: 0 0 28px rgba(155,89,182,0.35);
+  --gt: 0 0 28px rgba(0,212,170,0.35);
+}
+
+/* ── RESET FOR SPLASH ─────────────────────────────── */
+.page__content { margin: 0 !important; padding: 0 !important; max-width: 100% !important; }
+*, *::before, *::after { box-sizing: border-box; }
+
+/* ── HERO ─────────────────────────────────────────── */
+.jn-hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: var(--bg);
+  text-align: center;
+}
+#matrixCanvas {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  opacity: 0.18;
+  pointer-events: none;
+}
+.jn-hero__inner {
+  position: relative; z-index: 2;
+  padding: 2rem;
+  max-width: 720px;
+  width: 100%;
+}
+.jn-hero__avatar {
+  width: 110px; height: 110px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--teal);
+  box-shadow: var(--gt);
+  margin-bottom: 1.5rem;
+  display: block; margin-left: auto; margin-right: auto;
+  animation: jn-float 6s ease-in-out infinite;
+}
+.jn-hero__name {
+  font-family: 'Courier New', monospace;
+  font-size: clamp(2.8rem, 9vw, 5.5rem);
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.08em;
+  margin: 0 0 0.4rem;
+  line-height: 1;
+  animation: jn-glitch 9s infinite;
+}
+.jn-hero__tag {
+  font-family: 'Courier New', monospace;
+  font-size: 0.85rem;
+  color: var(--dim);
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+.jn-hero__sub {
+  font-family: 'Courier New', monospace;
+  font-size: 1.1rem;
+  color: var(--teal);
+  min-height: 1.6em;
+  margin-bottom: 2.5rem;
+}
+.jn-hero__sub::after {
+  content: '█';
+  animation: jn-blink 1s step-end infinite;
+  margin-left: 2px;
+}
+.jn-hero__btns {
+  display: flex; gap: 0.9rem;
+  justify-content: center; flex-wrap: wrap;
+}
+.jn-btn {
+  display: inline-block;
+  padding: 0.65rem 1.7rem;
+  border-radius: 5px;
+  font-family: monospace; font-size: 0.9rem;
+  text-decoration: none !important;
+  transition: transform 0.2s, box-shadow 0.2s;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+.jn-btn--primary  { background: var(--blue);  color: #fff; border-color: var(--blue); }
+.jn-btn--outline  { background: transparent;  color: var(--teal); border-color: var(--teal); }
+.jn-btn--ghost    { background: transparent;  color: var(--dim);  border-color: var(--border); }
+.jn-btn:hover { transform: translateY(-3px); box-shadow: var(--gb); color: #fff; text-decoration: none !important; }
+
+/* ── STATS BAR ───────────────────────────────────── */
+.jn-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  background: var(--bg);
+}
+@media (max-width: 600px) { .jn-stats { grid-template-columns: repeat(2,1fr); } }
+.jn-stat {
+  padding: 2.2rem 1rem;
+  text-align: center;
+  border-right: 1px solid var(--border);
+  transition: background 0.3s;
+}
+.jn-stat:last-child { border-right: 0; }
+.jn-stat:hover { background: rgba(52,152,219,0.05); }
+.jn-stat__num {
+  display: block;
+  font-size: 2.6rem; font-weight: 700;
+  font-family: monospace;
+  color: var(--blue); line-height: 1;
+}
+.jn-stat__num--purple { color: var(--purple); }
+.jn-stat__num--teal   { color: var(--teal); }
+.jn-stat__label {
+  display: block;
+  font-size: 0.72rem;
+  text-transform: uppercase; letter-spacing: 0.18em;
+  color: var(--dim); margin-top: 0.35rem;
+}
+
+/* ── SECTIONS ────────────────────────────────────── */
+.jn-sec {
+  max-width: 1180px; margin: 0 auto; padding: 5rem 2rem;
+}
+.jn-sec--full { max-width: 100%; background: rgba(52,152,219,0.02); }
+.jn-sec__head { margin-bottom: 2.5rem; }
+.jn-sec__title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.9rem; color: #fff;
+  margin: 0 0 0.3rem; display: inline-block;
+  position: relative;
+}
+.jn-sec__title::after {
+  content: '';
+  position: absolute; left: 0; bottom: -6px;
+  width: 36px; height: 2px;
+  background: linear-gradient(90deg, var(--blue), var(--purple));
+}
+.jn-sec__sub { color: var(--dim); font-size: 0.9rem; margin: 0.9rem 0 0; }
+
+/* ── FEATURE CARDS ───────────────────────────────── */
+.jn-features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  gap: 1.4rem;
+}
+.jn-feature {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px; padding: 2rem;
+  transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+  position: relative; overflow: hidden;
+  opacity: 0; transform: translateY(24px);
+}
+.jn-feature.jn-visible {
+  animation: jn-fadeup 0.55s ease forwards;
+}
+.jn-feature:nth-child(2).jn-visible { animation-delay: 0.1s; }
+.jn-feature:nth-child(3).jn-visible { animation-delay: 0.2s; }
+
+.jn-feature::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--blue), var(--purple));
+  transform: scaleX(0); transition: transform 0.35s;
+  transform-origin: left;
+}
+.jn-feature:hover { transform: translateY(-6px); border-color: rgba(52,152,219,0.3); box-shadow: var(--gb); }
+.jn-feature:hover::before { transform: scaleX(1); }
+
+.jn-feature__icon { font-size: 2.2rem; margin-bottom: 0.9rem; display: block; }
+.jn-feature__title {
+  font-size: 1.25rem; font-weight: 700; color: #fff;
+  margin-bottom: 0.65rem;
+  font-family: 'Playfair Display', serif;
+}
+.jn-feature__desc { color: var(--text); font-size: 0.88rem; line-height: 1.65; margin-bottom: 1.4rem; }
+.jn-feature__link {
+  font-family: monospace; font-size: 0.82rem; color: var(--teal);
+  text-decoration: none;
+  display: inline-flex; align-items: center; gap: 0.35rem;
+  transition: gap 0.2s;
+}
+.jn-feature__link:hover { gap: 0.65rem; color: var(--teal); text-decoration: none; }
+
+/* ── READING PROGRESS ────────────────────────────── */
+.jn-reading {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px; padding: 2rem;
+  display: grid;
+  grid-template-columns: 88px 1fr;
+  gap: 1.8rem; align-items: center;
+  max-width: 640px;
+}
+@media (max-width: 480px) { .jn-reading { grid-template-columns: 1fr; } .jn-reading__cover { display: none; } }
+.jn-reading__cover {
+  width: 88px; height: 130px;
+  border-radius: 6px; object-fit: cover;
+  box-shadow: 4px 6px 20px rgba(0,0,0,0.55);
+}
+.jn-reading__label {
+  font-family: monospace; font-size: 0.72rem;
+  text-transform: uppercase; letter-spacing: 0.18em;
+  color: var(--teal); margin-bottom: 0.25rem;
+}
+.jn-reading__title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15rem; color: #fff; margin-bottom: 0.15rem;
+}
+.jn-reading__author { color: var(--dim); font-size: 0.82rem; margin-bottom: 1rem; }
+.jn-bar { background: rgba(255,255,255,0.07); border-radius: 100px; height: 7px; overflow: hidden; }
+.jn-bar__fill {
+  height: 100%; border-radius: 100px;
+  background: linear-gradient(90deg, var(--blue), var(--teal));
+  width: 0; transition: width 1.6s ease;
+  position: relative; overflow: hidden;
+}
+.jn-bar__fill::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+  animation: jn-shimmer 2.2s infinite;
+}
+.jn-bar__pct { font-family: monospace; font-size: 0.75rem; color: var(--dim); margin-top: 0.35rem; }
+
+/* ── PROJECTS ────────────────────────────────────── */
+.jn-projects {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  gap: 1.4rem;
+}
+.jn-project {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px; padding: 1.8rem;
+  transition: transform 0.3s, border-color 0.3s;
+  opacity: 0; transform: translateY(24px);
+}
+.jn-project.jn-visible { animation: jn-fadeup 0.55s ease forwards; }
+.jn-project:nth-child(2).jn-visible { animation-delay: 0.1s; }
+.jn-project:nth-child(3).jn-visible { animation-delay: 0.2s; }
+.jn-project:hover { transform: translateY(-4px); border-color: rgba(155,89,182,0.35); }
+
+.jn-project__name { font-weight: 700; color: #fff; font-size: 1rem; margin-bottom: 0.6rem; }
+.jn-project__desc { color: var(--text); font-size: 0.84rem; line-height: 1.6; margin-bottom: 1.1rem; }
+.jn-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-bottom: 1rem; }
+.jn-tag {
+  font-family: monospace; font-size: 0.68rem;
+  padding: 0.18rem 0.55rem; border-radius: 100px;
+  background: rgba(52,152,219,0.1); color: var(--blue);
+  border: 1px solid rgba(52,152,219,0.22);
+}
+.jn-tag--p { background: rgba(155,89,182,0.1); color: var(--purple); border-color: rgba(155,89,182,0.22); }
+.jn-tag--t { background: rgba(0,212,170,0.08); color: var(--teal);   border-color: rgba(0,212,170,0.22); }
+.jn-tag--dim { background: rgba(255,255,255,0.04); color: var(--dim); border-color: var(--border); }
+.jn-project__link { font-family: monospace; font-size: 0.8rem; color: var(--blue); text-decoration: none; }
+.jn-project__link:hover { text-decoration: underline; color: var(--blue); }
+
+.jn-dim-card {
+  opacity: 0.4;
+  border-style: dashed;
+}
+.jn-dim-card:hover { opacity: 0.7; }
+.jn-dim-card .jn-project__name { color: var(--dim); }
+
+/* ── DIVIDER ─────────────────────────────────────── */
+.jn-div {
+  width: 100%; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border), transparent);
+}
+
+/* ── GAME SECTION ───────────────────────────────── */
+.jn-game-wrap {
+  max-width: 800px; margin: 0 auto; text-align: center;
+}
+.jn-game-title {
+  font-family: monospace;
+  font-size: 1.6rem; color: var(--teal);
+  letter-spacing: 0.2em; text-transform: uppercase;
+  margin: 0 0 0.2rem;
+}
+.jn-game-sub { color: var(--dim); font-family: monospace; font-size: 0.8rem; margin-bottom: 1.5rem; }
+.jn-game-hud {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 0.6rem 1rem;
+  background: rgba(0,0,0,0.4);
+  border: 1px solid var(--border); border-bottom: none;
+  border-radius: 8px 8px 0 0;
+  font-family: monospace; font-size: 0.88rem;
+}
+.jn-score  { color: var(--teal); }
+.jn-lives  { color: #e74c3c; }
+.jn-hiscore { color: var(--purple); }
+#gameCanvas {
+  display: block; width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 0 0 8px 8px;
+  background: #050510;
+  cursor: none; touch-action: none;
+}
+.jn-game-hint { font-family: monospace; font-size: 0.76rem; color: var(--dim); margin-top: 0.8rem; }
+.jn-last-book {
+  font-family: monospace; font-size: 0.82rem; color: var(--teal);
+  min-height: 1.3em; margin-top: 0.4rem;
+  transition: opacity 0.4s;
+}
+
+/* ── KEYFRAMES ──────────────────────────────────── */
+@keyframes jn-float  { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
+@keyframes jn-blink  { 0%,100%{opacity:1} 50%{opacity:0} }
+@keyframes jn-shimmer{ 0%{transform:translateX(-100%)} 100%{transform:translateX(200%)} }
+@keyframes jn-fadeup { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
+@keyframes jn-glitch {
+  0%,85%,100%  { text-shadow: var(--gb); }
+  86% { text-shadow: -2px 0 #ff0080, 2px 0 var(--teal); transform: translateX(-1px); }
+  87% { text-shadow:  2px 0 var(--blue), -2px 0 #ff0080; transform: translateX(1px); }
+  88% { transform: none; text-shadow: var(--gb); }
+}
+</style>
+
+<!-- ══════════════════════════════════════════════════
+     HERO
+     ══════════════════════════════════════════════════ -->
+<section class="jn-hero">
+  <canvas id="matrixCanvas"></canvas>
+  <div class="jn-hero__inner">
+    <img src="/assets/images/profile.jpg" alt="Jorge Navarro" class="jn-hero__avatar">
+    <h1 class="jn-hero__name">jotaenece</h1>
+    <p class="jn-hero__tag">Data Engineer &amp; Storyteller · España</p>
+    <p class="jn-hero__sub" id="jnSub"></p>
+    <div class="jn-hero__btns">
+      <a href="/taller/"   class="jn-btn jn-btn--primary">✍ El Taller</a>
+      <a href="/lecturas/" class="jn-btn jn-btn--outline">◉ La Biblioteca</a>
+      <a href="https://github.com/jotaenece" class="jn-btn jn-btn--ghost" target="_blank" rel="noopener">&lt;/&gt; GitHub</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════
+     STATS
+     ══════════════════════════════════════════════════ -->
+<div class="jn-stats" id="jnStats">
+  <div class="jn-stat">
+    <span class="jn-stat__num" data-target="{{ site.data.lecturas_goodreads | size }}">0</span>
+    <span class="jn-stat__label">Libros Leídos</span>
+  </div>
+  <div class="jn-stat">
+    <span class="jn-stat__num jn-stat__num--purple" data-target="{{ site.categories.escritura | size | default: 1 }}">0</span>
+    <span class="jn-stat__label">Relatos Escritos</span>
+  </div>
+  <div class="jn-stat">
+    <span class="jn-stat__num jn-stat__num--teal" data-target="3">0</span>
+    <span class="jn-stat__label">Proyectos Activos</span>
+  </div>
+  <div class="jn-stat">
+    <span class="jn-stat__num" style="color:var(--dim);font-size:2rem">∞</span>
+    <span class="jn-stat__label">Curiosidad</span>
+  </div>
+</div>
+
+<div class="jn-div"></div>
+
+<!-- ══════════════════════════════════════════════════
+     FEATURE CARDS
+     ══════════════════════════════════════════════════ -->
+<section class="jn-sec">
+  <div class="jn-sec__head">
+    <h2 class="jn-sec__title">Mis rincones</h2>
+    <p class="jn-sec__sub">Tres mundos, una misma cabeza inquieta.</p>
+  </div>
+  <div class="jn-features" id="jnFeatures">
+    <div class="jn-feature">
+      <span class="jn-feature__icon">✍</span>
+      <div class="jn-feature__title">El Taller</div>
+      <p class="jn-feature__desc">Donde el código descansa y la ficción toma el mando. Relatos cortos, ejercicios de estilo y avances de una novela que quizás algún día termine.</p>
+      <a href="/taller/" class="jn-feature__link">Entrar al taller →</a>
+    </div>
+    <div class="jn-feature">
+      <span class="jn-feature__icon">◉</span>
+      <div class="jn-feature__title">La Biblioteca</div>
+      <p class="jn-feature__desc">Lecturas, reseñas y curaduría sincronizada con Goodreads. Fantasía épica, ciencia ficción y algún thriller que no pude soltar.</p>
+      <a href="/lecturas/" class="jn-feature__link">Ver la biblioteca →</a>
+    </div>
+    <div class="jn-feature">
+      <span class="jn-feature__icon">&lt;/&gt;</span>
+      <div class="jn-feature__title">Proyectos</div>
+      <p class="jn-feature__desc">Data engineering, automatizaciones y este mismo sitio web. El lado más técnico, donde Python y SQL hablan por mí.</p>
+      <a href="#proyectos" class="jn-feature__link">Ver proyectos →</a>
+    </div>
+  </div>
+</section>
+
+<div class="jn-div"></div>
+
+<!-- ══════════════════════════════════════════════════
+     LEYENDO ACTUALMENTE
+     ══════════════════════════════════════════════════ -->
+<section class="jn-sec">
+  <div class="jn-sec__head">
+    <h2 class="jn-sec__title">Leyendo ahora</h2>
+    <p class="jn-sec__sub">El progreso honesto de un lector lento pero constante.</p>
+  </div>
+  <div class="jn-reading" id="jnReading">
+    <img
+      class="jn-reading__cover"
+      src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1745966063l/231280059._SY475_.jpg"
+      alt="Portada"
+      loading="lazy"
+    >
+    <div>
+      <p class="jn-reading__label">Leyendo actualmente</p>
+      <p class="jn-reading__title">El libro de cocina del anarquista de la mazmorra</p>
+      <p class="jn-reading__author">Matt Dinniman · Carl el Mazmorrero #3</p>
+      <div class="jn-bar">
+        <div class="jn-bar__fill" data-progress="72" style="width:0%"></div>
+      </div>
+      <p class="jn-bar__pct">72% completado</p>
+    </div>
+  </div>
+</section>
+
+<div class="jn-div"></div>
+
+<!-- ══════════════════════════════════════════════════
+     PROYECTOS
+     ══════════════════════════════════════════════════ -->
+<section class="jn-sec" id="proyectos">
+  <div class="jn-sec__head">
+    <h2 class="jn-sec__title">Proyectos</h2>
+    <p class="jn-sec__sub">Código que sí vi terminar.</p>
+  </div>
+  <div class="jn-projects" id="jnProjects">
+
+    <div class="jn-project">
+      <div class="jn-project__name">jotaenece.github.io</div>
+      <p class="jn-project__desc">Este mismo sitio. Generado con Jekyll y el tema Minimal Mistakes, con diseño personalizado y despliegue automático en GitHub Pages.</p>
+      <div class="jn-tags">
+        <span class="jn-tag">Jekyll</span>
+        <span class="jn-tag">SCSS</span>
+        <span class="jn-tag jn-tag--t">GitHub Pages</span>
+      </div>
+      <a href="https://github.com/jotaenece/jotaenece.github.io" class="jn-project__link" target="_blank" rel="noopener">→ Ver en GitHub</a>
+    </div>
+
+    <div class="jn-project">
+      <div class="jn-project__name">Goodreads Sync Bot</div>
+      <p class="jn-project__desc">Script Python que parsea el RSS de Goodreads y actualiza automáticamente los datos de lecturas cada día mediante GitHub Actions.</p>
+      <div class="jn-tags">
+        <span class="jn-tag">Python</span>
+        <span class="jn-tag jn-tag--p">GitHub Actions</span>
+        <span class="jn-tag">RSS · YAML</span>
+      </div>
+      <a href="https://github.com/jotaenece/jotaenece.github.io/blob/main/sync_books.py" class="jn-project__link" target="_blank" rel="noopener">→ Ver el código</a>
+    </div>
+
+    <div class="jn-project jn-dim-card">
+      <div class="jn-project__name">Próximo proyecto</div>
+      <p class="jn-project__desc">En construcción. Algo con datos, algo con texto. Ya se irá viendo.</p>
+      <div class="jn-tags">
+        <span class="jn-tag jn-tag--dim">coming soon</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="jn-div"></div>
+
+<!-- ══════════════════════════════════════════════════
+     MINI-GAME: ROMPE ESTANTES
+     ══════════════════════════════════════════════════ -->
+<section class="jn-sec jn-sec--full">
+  <div style="max-width:1180px;margin:0 auto;padding:5rem 2rem">
+    <div class="jn-sec__head" style="text-align:center;margin-bottom:2rem">
+      <h2 class="jn-sec__title" style="display:block;text-align:center">Rompe Estantes</h2>
+      <p class="jn-sec__sub" style="text-align:center">Un Breakout con los libros de mi biblioteca. Rómpelos todos.</p>
+    </div>
+    <div class="jn-game-wrap">
+      <div class="jn-game-hud">
+        <span class="jn-score">Puntos: <b id="gScore">0</b></span>
+        <span style="font-family:monospace;font-size:0.8rem;color:var(--dim)" id="gStatus">— Pulsa ESPACIO o toca para empezar —</span>
+        <span class="jn-lives">Vidas: <b id="gLives">3</b> &hearts;</span>
+      </div>
+      <canvas id="gameCanvas" height="420"></canvas>
+      <div class="jn-game-hint">
+        Desktop: mueve el ratón · Móvil: arrastra el dedo · ESPACIO: pausa
+      </div>
+      <div class="jn-last-book" id="gLastBook"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════
+     SCRIPTS
+     ══════════════════════════════════════════════════ -->
+<script>
+(function () {
+  'use strict';
+
+  /* ── 1. MATRIX RAIN ─────────────────────────────── */
+  const mc = document.getElementById('matrixCanvas');
+  const mctx = mc.getContext('2d');
+  const CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789{}[]<>|=+-/*#@%&§'.split('');
+  let cols, drops;
+
+  function matrixResize() {
+    mc.width  = mc.offsetWidth;
+    mc.height = mc.offsetHeight;
+    cols  = Math.floor(mc.width / 16);
+    drops = Array(cols).fill(1);
+  }
+
+  function matrixDraw() {
+    mctx.fillStyle = 'rgba(8,8,20,0.18)';
+    mctx.fillRect(0, 0, mc.width, mc.height);
+    mctx.fillStyle = '#00d4aa';
+    mctx.font = '13px monospace';
+    drops.forEach((y, i) => {
+      const ch = CHARS[Math.random() * CHARS.length | 0];
+      mctx.fillText(ch, i * 16, y * 16);
+      if (y * 16 > mc.height && Math.random() > 0.975) drops[i] = 0;
+      else drops[i]++;
+    });
+  }
+
+  matrixResize();
+  window.addEventListener('resize', matrixResize);
+  setInterval(matrixDraw, 55);
+
+  /* ── 2. HERO TYPING ─────────────────────────────── */
+  const phrases = [
+    'Data Engineer & Storyteller.',
+    'Transformando SQL en insights...',
+    '...y palabras en historias.',
+    'Bienvenido a mi rincón.'
+  ];
+  let pi = 0, ci = 0, deleting = false;
+  const subEl = document.getElementById('jnSub');
+
+  function typeHero() {
+    const phrase = phrases[pi];
+    if (!deleting) {
+      subEl.textContent = phrase.slice(0, ++ci);
+      if (ci === phrase.length) { deleting = true; setTimeout(typeHero, 1800); return; }
+    } else {
+      subEl.textContent = phrase.slice(0, --ci);
+      if (ci === 0) { deleting = false; pi = (pi + 1) % phrases.length; }
+    }
+    setTimeout(typeHero, deleting ? 40 : 72);
+  }
+  typeHero();
+
+  /* ── 3. INTERSECTION OBSERVER (fade-in + counters + bar) */
+  const observed = new Set();
+
+  function countUp(el) {
+    const target = +el.dataset.target || 0;
+    if (!target) return;
+    let v = 0, step = Math.max(1, Math.ceil(target / 40));
+    const t = setInterval(() => {
+      v = Math.min(v + step, target);
+      el.textContent = v;
+      if (v >= target) clearInterval(t);
+    }, 35);
+  }
+
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (!e.isIntersecting || observed.has(e.target)) return;
+      observed.add(e.target);
+
+      // feature / project cards
+      if (e.target.classList.contains('jn-feature') || e.target.classList.contains('jn-project')) {
+        e.target.classList.add('jn-visible');
+      }
+      // stats counters
+      if (e.target.id === 'jnStats') {
+        e.target.querySelectorAll('[data-target]').forEach(countUp);
+      }
+      // progress bar
+      if (e.target.id === 'jnReading') {
+        const bar = e.target.querySelector('.jn-bar__fill');
+        if (bar) setTimeout(() => { bar.style.width = bar.dataset.progress + '%'; }, 300);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.jn-feature, .jn-project').forEach(el => io.observe(el));
+  ['jnStats','jnReading'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) io.observe(el);
+  });
+
+  /* ── 4. BREAKOUT GAME ────────────────────────────── */
+  const gc   = document.getElementById('gameCanvas');
+  const gctx = gc.getContext('2d');
+
+  const BOOKS = [
+    // Row 0 – Cosmere / Sanderson (warm amber)
+    {t:'MISTBORN',      c:'#e67e22'}, {t:'EL POZO',      c:'#e67e22'},
+    {t:'EL HEROE',      c:'#e67e22'}, {t:'ELANTRIS',     c:'#e67e22'},
+    {t:'WARBREAKER',    c:'#e67e22'}, {t:'EL CAMINO',    c:'#e67e22'},
+    {t:'PALABRAS',      c:'#e67e22'}, {t:'OATHBRINGER',  c:'#e67e22'},
+    // Row 1 – Stormlight / more Sanderson (gold)
+    {t:'JURAMENTADA',   c:'#f0b429'}, {t:'EL RITMO',     c:'#f0b429'},
+    {t:'EDGEDANCER',    c:'#f0b429'}, {t:'DAWNSHARD',    c:'#f0b429'},
+    {t:'ARCANUM',       c:'#f0b429'}, {t:'EL ARCHIVO',   c:'#f0b429'},
+    {t:'TRESS',         c:'#f0b429'}, {t:'YUMI',         c:'#f0b429'},
+    // Row 2 – Red Rising / Sci-Fi (steel blue)
+    {t:'RED RISING',    c:'#2980b9'}, {t:'GOLDEN SON',   c:'#2980b9'},
+    {t:'MORNING STAR',  c:'#2980b9'}, {t:'IRON GOLD',    c:'#2980b9'},
+    {t:'DARK AGE',      c:'#2980b9'}, {t:'EL MARCIANO',  c:'#2980b9'},
+    {t:'FARSEER',       c:'#2980b9'}, {t:'ASSASSIN',     c:'#2980b9'},
+    // Row 3 – LitRPG / Dark Fantasy / Mystery (purple)
+    {t:'CARL #1',       c:'#8e44ad'}, {t:'CARL #2',      c:'#8e44ad'},
+    {t:'CARL #3',       c:'#8e44ad'}, {t:'EMP. VAMPIRO', c:'#8e44ad'},
+    {t:'EL NOMBRE',     c:'#8e44ad'}, {t:'WITCHER',      c:'#8e44ad'},
+    {t:'LA CHICA WEB',  c:'#8e44ad'}, {t:'LISBETH',      c:'#8e44ad'},
+  ];
+
+  const COLS = 8, ROWS = 4;
+  const PAD_W = 110, PAD_H = 11;
+  const BALL_R = 7;
+  const LIVES = 3;
+
+  let W, H, brickW, brickH;
+  let ball, paddle, bricks, score, lives, status, particles, lastBook, hiScore, animId;
+  let mouseX = null, touchX = null;
+
+  function resize() {
+    W = gc.offsetWidth;
+    H = 420;
+    gc.width  = W;
+    gc.height = H;
+    brickW = Math.floor((W - 20) / COLS) - 4;
+    brickH = 28;
+    if (paddle) paddle.x = Math.min(paddle.x, W - PAD_W);
+  }
+
+  function initGame() {
+    resize();
+    score  = 0;
+    lives  = LIVES;
+    status = 'idle';
+    particles = [];
+    lastBook  = '';
+    hiScore   = +localStorage.getItem('jn_hi') || 0;
+    resetBall();
+    makeBricks();
+    updateHUD();
+    render();
+  }
+
+  function resetBall() {
+    paddle = { x: W / 2 - PAD_W / 2, y: H - 32 };
+    ball   = { x: W / 2, y: H - 70, dx: 3.8, dy: -3.8 };
+  }
+
+  function makeBricks() {
+    bricks = [];
+    const ox = 10;
+    const oy = 50;
+    BOOKS.forEach((b, i) => {
+      const row = Math.floor(i / COLS);
+      const col = i % COLS;
+      bricks.push({
+        x:     ox + col * (brickW + 4),
+        y:     oy + row * (brickH + 5),
+        w:     brickW,
+        h:     brickH,
+        color: b.c,
+        title: b.t,
+        alive: true,
+      });
+    });
+  }
+
+  /* particles */
+  function spawnParticles(x, y, color) {
+    for (let i = 0; i < 10; i++) {
+      const angle = Math.random() * Math.PI * 2;
+      const speed = 1 + Math.random() * 2.5;
+      particles.push({
+        x, y,
+        dx: Math.cos(angle) * speed,
+        dy: Math.sin(angle) * speed,
+        life: 1, color,
+      });
+    }
+  }
+
+  /* collision AABB */
+  function collide() {
+    bricks.forEach(br => {
+      if (!br.alive) return;
+      if (
+        ball.x + BALL_R > br.x && ball.x - BALL_R < br.x + br.w &&
+        ball.y + BALL_R > br.y && ball.y - BALL_R < br.y + br.h
+      ) {
+        br.alive = false;
+        score += 10;
+        lastBook = '— ' + br.title;
+        document.getElementById('gLastBook').textContent = lastBook;
+        spawnParticles(br.x + br.w / 2, br.y + br.h / 2, br.color);
+        /* which face did we hit? */
+        const fromLeft  = ball.x < br.x;
+        const fromRight = ball.x > br.x + br.w;
+        if (fromLeft || fromRight) ball.dx *= -1;
+        else                       ball.dy *= -1;
+        updateHUD();
+      }
+    });
+  }
+
+  function updateHUD() {
+    document.getElementById('gScore').textContent  = score;
+    document.getElementById('gLives').textContent  = lives;
+    if (score > hiScore) {
+      hiScore = score;
+      localStorage.setItem('jn_hi', hiScore);
+    }
+  }
+
+  function update() {
+    if (status !== 'playing') return;
+
+    /* move ball */
+    ball.x += ball.dx;
+    ball.y += ball.dy;
+
+    /* wall bounces */
+    if (ball.x - BALL_R < 0)  { ball.x = BALL_R;     ball.dx = Math.abs(ball.dx); }
+    if (ball.x + BALL_R > W)  { ball.x = W - BALL_R; ball.dx = -Math.abs(ball.dx); }
+    if (ball.y - BALL_R < 0)  { ball.y = BALL_R;     ball.dy = Math.abs(ball.dy); }
+
+    /* paddle */
+    let targetX = mouseX !== null ? mouseX : (touchX !== null ? touchX : null);
+    if (targetX !== null) {
+      paddle.x = Math.max(0, Math.min(W - PAD_W, targetX - PAD_W / 2));
+    }
+
+    /* paddle bounce */
+    if (
+      ball.y + BALL_R > paddle.y &&
+      ball.y - BALL_R < paddle.y + PAD_H &&
+      ball.x > paddle.x &&
+      ball.x < paddle.x + PAD_W &&
+      ball.dy > 0
+    ) {
+      ball.dy = -Math.abs(ball.dy);
+      /* angle based on hit position */
+      const rel = (ball.x - (paddle.x + PAD_W / 2)) / (PAD_W / 2);
+      ball.dx = rel * 5;
+    }
+
+    /* fell off bottom */
+    if (ball.y - BALL_R > H) {
+      lives--;
+      updateHUD();
+      if (lives <= 0) {
+        status = 'gameover';
+        document.getElementById('gStatus').textContent = '— Game Over · ESPACIO para reintentar —';
+      } else {
+        status = 'paused';
+        document.getElementById('gStatus').textContent = '— Perdiste una vida · ESPACIO para continuar —';
+        resetBall();
+      }
+    }
+
+    /* win */
+    if (bricks.every(b => !b.alive)) {
+      status = 'win';
+      document.getElementById('gStatus').textContent = '— ¡Biblioteca destrozada! · ESPACIO para reiniciar —';
+    }
+
+    /* particles */
+    particles = particles.filter(p => p.life > 0);
+    particles.forEach(p => { p.x += p.dx; p.y += p.dy; p.life -= 0.045; });
+
+    collide();
+  }
+
+  function draw() {
+    gctx.clearRect(0, 0, W, H);
+
+    /* background */
+    gctx.fillStyle = '#050510';
+    gctx.fillRect(0, 0, W, H);
+
+    /* subtle grid */
+    gctx.strokeStyle = 'rgba(255,255,255,0.025)';
+    gctx.lineWidth = 0.5;
+    for (let x = 0; x < W; x += 40) { gctx.beginPath(); gctx.moveTo(x,0); gctx.lineTo(x,H); gctx.stroke(); }
+    for (let y = 0; y < H; y += 40) { gctx.beginPath(); gctx.moveTo(0,y); gctx.lineTo(W,y); gctx.stroke(); }
+
+    /* bricks */
+    bricks.forEach(br => {
+      if (!br.alive) return;
+      gctx.fillStyle = br.color;
+      gctx.beginPath();
+      gctx.roundRect(br.x, br.y, br.w, br.h, 4);
+      gctx.fill();
+      /* title text */
+      gctx.fillStyle = 'rgba(255,255,255,0.85)';
+      gctx.font = `bold ${Math.min(9, brickW/8)}px monospace`;
+      gctx.textAlign = 'center';
+      gctx.textBaseline = 'middle';
+      gctx.fillText(br.title, br.x + br.w / 2, br.y + br.h / 2);
+    });
+
+    /* particles */
+    particles.forEach(p => {
+      gctx.globalAlpha = p.life;
+      gctx.fillStyle   = p.color;
+      gctx.beginPath();
+      gctx.arc(p.x, p.y, 3, 0, Math.PI * 2);
+      gctx.fill();
+    });
+    gctx.globalAlpha = 1;
+
+    /* paddle */
+    const pg = gctx.createLinearGradient(paddle.x, 0, paddle.x + PAD_W, 0);
+    pg.addColorStop(0, '#3498db');
+    pg.addColorStop(1, '#9b59b6');
+    gctx.fillStyle = pg;
+    gctx.shadowColor = '#3498db';
+    gctx.shadowBlur  = 12;
+    gctx.beginPath();
+    gctx.roundRect(paddle.x, paddle.y, PAD_W, PAD_H, 6);
+    gctx.fill();
+    gctx.shadowBlur = 0;
+
+    /* ball */
+    gctx.shadowColor = '#00d4aa';
+    gctx.shadowBlur  = 14;
+    gctx.fillStyle   = '#ffffff';
+    gctx.beginPath();
+    gctx.arc(ball.x, ball.y, BALL_R, 0, Math.PI * 2);
+    gctx.fill();
+    gctx.shadowBlur = 0;
+
+    /* idle overlay */
+    if (status === 'idle') {
+      gctx.fillStyle = 'rgba(8,8,20,0.7)';
+      gctx.fillRect(0, 0, W, H);
+      gctx.fillStyle = '#00d4aa';
+      gctx.font = 'bold 22px monospace';
+      gctx.textAlign = 'center';
+      gctx.textBaseline = 'middle';
+      gctx.fillText('ROMPE ESTANTES', W/2, H/2 - 18);
+      gctx.fillStyle = 'rgba(255,255,255,0.5)';
+      gctx.font = '13px monospace';
+      gctx.fillText('Pulsa ESPACIO o toca la pantalla', W/2, H/2 + 14);
+    }
+
+    /* gameover overlay */
+    if (status === 'gameover') {
+      gctx.fillStyle = 'rgba(8,8,20,0.8)';
+      gctx.fillRect(0, 0, W, H);
+      gctx.fillStyle = '#e74c3c';
+      gctx.font = 'bold 26px monospace';
+      gctx.textAlign = 'center';
+      gctx.textBaseline = 'middle';
+      gctx.fillText('GAME OVER', W/2, H/2 - 24);
+      gctx.fillStyle = '#fff';
+      gctx.font = '15px monospace';
+      gctx.fillText('Puntuación: ' + score, W/2, H/2 + 8);
+      gctx.fillStyle = 'rgba(255,255,255,0.4)';
+      gctx.font = '12px monospace';
+      gctx.fillText('ESPACIO para reintentar', W/2, H/2 + 34);
+    }
+
+    /* win overlay */
+    if (status === 'win') {
+      gctx.fillStyle = 'rgba(8,8,20,0.8)';
+      gctx.fillRect(0, 0, W, H);
+      gctx.fillStyle = '#00d4aa';
+      gctx.font = 'bold 22px monospace';
+      gctx.textAlign = 'center';
+      gctx.textBaseline = 'middle';
+      gctx.fillText('¡BIBLIOTECA DESTROZADA!', W/2, H/2 - 24);
+      gctx.fillStyle = '#fff';
+      gctx.font = '15px monospace';
+      gctx.fillText('Puntuación final: ' + score, W/2, H/2 + 8);
+      gctx.fillStyle = 'rgba(255,255,255,0.4)';
+      gctx.font = '12px monospace';
+      gctx.fillText('ESPACIO para repetir', W/2, H/2 + 34);
+    }
+  }
+
+  function render() {
+    cancelAnimationFrame(animId);
+    update();
+    draw();
+    animId = requestAnimationFrame(render);
+  }
+
+  /* ── events ── */
+  gc.addEventListener('mousemove', e => {
+    const r = gc.getBoundingClientRect();
+    mouseX = e.clientX - r.left;
+  });
+  gc.addEventListener('touchmove', e => {
+    e.preventDefault();
+    const r = gc.getBoundingClientRect();
+    touchX = e.touches[0].clientX - r.left;
+  }, { passive: false });
+  gc.addEventListener('touchend', () => { touchX = null; });
+
+  function actionKey() {
+    if (status === 'idle' || status === 'win' || status === 'gameover') {
+      initGame();
+      status = 'playing';
+      document.getElementById('gStatus').textContent = '';
+    } else if (status === 'playing') {
+      status = 'paused';
+      document.getElementById('gStatus').textContent = '— Pausado · ESPACIO para continuar —';
+    } else if (status === 'paused') {
+      status = 'playing';
+      document.getElementById('gStatus').textContent = '';
+    }
+  }
+
+  document.addEventListener('keydown', e => { if (e.code === 'Space') { e.preventDefault(); actionKey(); } });
+  gc.addEventListener('click',       actionKey);
+  gc.addEventListener('touchstart',  e => { e.preventDefault(); if (status !== 'playing') actionKey(); }, { passive: false });
+
+  window.addEventListener('resize', () => {
+    resize();
+    if (status !== 'playing') render();
+  });
+
+  /* init */
+  initGame();
+
+})();
+</script>
