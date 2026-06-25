@@ -21,6 +21,6 @@ jobs:
         run: |
           git config --global user.name 'Goodreads Bot'
           git config --global user.email 'bot@jotaenece.io'
-          git add _data/lecturas_goodreads.yml
+          git add _data/lecturas_goodreads.yml _data/leyendo_ahora.yml
           git commit -m "Update Goodreads reviews" || exit 0
           git push

@@ -412,30 +412,35 @@ title: false
 <div class="jn-div"></div>
 
 <!-- ══════════════════════════════════════════════════
-     LEYENDO ACTUALMENTE
+     LEYENDO ACTUALMENTE  (datos de _data/leyendo_ahora.yml)
      ══════════════════════════════════════════════════ -->
 <section class="jn-sec">
   <div class="jn-sec__head">
     <h2 class="jn-sec__title">Leyendo ahora</h2>
     <p class="jn-sec__sub">El progreso honesto de un lector lento pero constante.</p>
   </div>
+  {% assign libro = site.data.leyendo_ahora %}
+  {% if libro and libro.title and libro.title != "" %}
   <div class="jn-reading" id="jnReading">
-    <img
-      class="jn-reading__cover"
-      src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1745966063l/231280059._SY475_.jpg"
-      alt="Portada"
-      loading="lazy"
-    >
+    {% if libro.image and libro.image != "" %}
+    <img class="jn-reading__cover" src="{{ libro.image }}" alt="{{ libro.title }}" loading="lazy">
+    {% endif %}
     <div>
       <p class="jn-reading__label">Leyendo actualmente</p>
-      <p class="jn-reading__title">El libro de cocina del anarquista de la mazmorra</p>
-      <p class="jn-reading__author">Matt Dinniman · Carl el Mazmorrero #3</p>
+      <p class="jn-reading__title">{{ libro.title }}</p>
+      <p class="jn-reading__author">{{ libro.author }}</p>
+      {% assign pct = libro.progress | default: 0 %}
       <div class="jn-bar">
-        <div class="jn-bar__fill" data-progress="72" style="width:0%"></div>
+        <div class="jn-bar__fill" data-progress="{{ pct }}" style="width:0%"></div>
       </div>
-      <p class="jn-bar__pct">72% completado</p>
+      <p class="jn-bar__pct">{{ pct }}% completado
+        — <a href="{{ libro.link }}" target="_blank" rel="noopener" style="color:var(--teal);font-family:monospace;font-size:0.75rem">ver en Goodreads →</a>
+      </p>
     </div>
   </div>
+  {% else %}
+  <p style="color:var(--dim);font-family:monospace;font-size:0.9rem">Sin lectura activa por el momento.</p>
+  {% endif %}
 </section>
 
 <div class="jn-div"></div>
