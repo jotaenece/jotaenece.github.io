@@ -1,3 +1,23 @@
+- author: Andy Weir
+  image: https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1431492647l/17563539.jpg
+  link: https://www.goodreads.com/review/show/8898123666?utm_medium=api&utm_source=rss
+  rating: '4'
+  review: "<a href=\"https://www.goodreads.com/book/show/17563539-the-egg?utm_medium=api&amp;utm_source=rss\"\
+    ><img alt=\"The Egg\" src=\"https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1431492647l/17563539._SY75_.jpg\"\
+    \ /></a><br />\n                                      author: Andy Weir<br />\n\
+    \                                      name: Jorge<br />\n                   \
+    \                   average rating: 4.20<br />\n                             \
+    \         book published: 2009<br />\n                                      rating:\
+    \ 4<br />\n                                      read at: 2026/08/28<br />\n \
+    \                                     date added: 2026/08/28<br />\n         \
+    \                             shelves: <br />\n                              \
+    \        review: <br />Relato muy corto, leído en 5 minutos.<br /><br />Trata\
+    \ sobre la vida, la muerte y lo que hay después de morir. Sin spoilers, pero te\
+    \ va a hacer pensar en cómo tratas a los demás.<br /><br />Se puede leer aqui:<br\
+    \ /><a href=\"https://www.galactanet.com/oneoff/theegg_es_mod.html\" rel=\"nofollow\
+    \ noopener\" target=\"_blank\">https://www.galactanet.com/oneoff/the...</a><br\
+    \ /><br /><br />"
+  title: The Egg
 - author: Leo Tolstoy
   image: https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1514968459l/36715356.jpg
   link: https://www.goodreads.com/review/show/8826907333?utm_medium=api&utm_source=rss
@@ -53,16 +73,16 @@
     \              book published: 2016<br />\n                                  \
     \    rating: 3<br />\n                                      read at: 2026/08/02<br\
     \ />\n                                      date added: 2026/08/02<br />\n   \
-    \                                   shelves: next<br />\n                    \
-    \                  review: <br />3.5<br /><br />Me ha gustado, no es una ciencia\
-    \ ficción muy “dura”. Es el libro que le recomendaría a esa persona que quiere\
-    \ empezar a leer ciencia ficción, ya que es una novela ligera, no muy larga y\
-    \ fácil de leer.<br />No dejan de pasar cosas durante la novela lo que resulta\
-    \ estimulante.<br />Es verdad que en muchos momentos da la sensacion de que la\
-    \ idea de la novela podría estar mas desarrollada, mejor aprovechada. Pero la\
-    \ verdad es que tambien complícaria las cosas por lo que creo que el autor ha\
-    \ encontrado aquí un buen equilibrio y se entiende que de esta forma haya sido\
-    \ una novela de éxito.<br />La recomendaré.<br />"
+    \                                   shelves: <br />\n                        \
+    \              review: <br />3.5<br /><br />Me ha gustado, no es una ciencia ficción\
+    \ muy “dura”. Es el libro que le recomendaría a esa persona que quiere empezar\
+    \ a leer ciencia ficción, ya que es una novela ligera, no muy larga y fácil de\
+    \ leer.<br />No dejan de pasar cosas durante la novela lo que resulta estimulante.<br\
+    \ />Es verdad que en muchos momentos da la sensacion de que la idea de la novela\
+    \ podría estar mas desarrollada, mejor aprovechada. Pero la verdad es que tambien\
+    \ complícaria las cosas por lo que creo que el autor ha encontrado aquí un buen\
+    \ equilibrio y se entiende que de esta forma haya sido una novela de éxito.<br\
+    \ />La recomendaré.<br />"
   title: Materia oscura
 - author: Matt Dinniman
   image: https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1763159698l/242017045._SY475_.jpg
@@ -122,13 +142,13 @@
     \              book published: 2020<br />\n                                  \
     \    rating: 3<br />\n                                      read at: 2026/01/31<br\
     \ />\n                                      date added: 2026/01/31<br />\n   \
-    \                                   shelves: next<br />\n                    \
-    \                  review: <br />3,5<br /><br />Buen libro, me ha gustado. Me\
-    \ ha parecido muy entretenido y fácil de leer. El ritmo es rápido, con capítulos\
-    \ cortos en los que siempre pasan cosas.<br />Tiene un humor negro y ácido, con\
-    \ referencias a la cultura pop, que si te gusta es tu libro.<br /><br />Es como\
-    \ si mezclaras un videjuego rpg + juegos del hambre + futurama. <br /><br />Con\
-    \ ganas de leerme el segundo para ahondar en el “lore”.<br /><br />"
+    \                                   shelves: <br />\n                        \
+    \              review: <br />3,5<br /><br />Buen libro, me ha gustado. Me ha parecido\
+    \ muy entretenido y fácil de leer. El ritmo es rápido, con capítulos cortos en\
+    \ los que siempre pasan cosas.<br />Tiene un humor negro y ácido, con referencias\
+    \ a la cultura pop, que si te gusta es tu libro.<br /><br />Es como si mezclaras\
+    \ un videjuego rpg + juegos del hambre + futurama. <br /><br />Con ganas de leerme\
+    \ el segundo para ahondar en el “lore”.<br /><br />"
   title: 'Carl el mazmorrero (Carl el mazmorrero, #1)'
 - author: Brandon Sanderson
   image: https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1752145446l/238413653._SY475_.jpg
